@@ -1,0 +1,7 @@
+Readme
+	This is phpMyRedis. Just upload and your ready to go. This is a alpha version, so it is very rough but it should work. 
+Todo:
+	Add support for password protected Redis servers
+	Add support for remote Redis servers
+	Add FlushDB functionality
+	More?
