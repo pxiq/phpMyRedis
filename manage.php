@@ -17,28 +17,30 @@ if($_GET['f']) {
 					$cmdSet->setArguments($_GET['view']);
 					$cmdGetReply = $redis->executeCommand($cmdSet);
 					header("Location: ?f=list");
-				} else if($_GET['do'] == 'edit') {
-					$key = $_GET['view'];
-					if($_POST) {
-						if($_POST['keyname'] != $key and $_POST['keyvalue'] === $redis->get($key)) {	# We changed the key name, but not the content, we just use RENAME
-							$cmdSet = $redis->createCommand('rename');
-							$cmdSet->setArguments(array($key,$_POST['keyname']));
-							$cmdGetReply = $redis->executeCommand($cmdSet);
-						} else if($_POST['keyname'] == $key and $_POST['keyvalue'] != $redis->get($key)) {	# We have the value changed
-							$redis->set($_POST['keyname'],$_POST['keyvalue']);
-						} else if($_POST['keyname'] != $key and $_POST['keyvalue'] != $redis->get($key)) {	# We have both changed
-							$redis->set($_POST['keyname'],$_POST['keyvalue']);
-							$cmdSet = $redis->createCommand('del');
-							$cmdSet->setArguments($key);
-							$cmdGetReply = $redis->executeCommand($cmdSet);
-						}
-						header("Location: ?f=list");
-					}
 				}
 			} else {
 				$cmdGetReply = $redis->get($_GET['view']);
 				$f = "view";
 			}
+		break;
+		case 'edit' :
+			$key = $_GET['view'];
+			if($_POST and $key) {
+				if($_POST['keyname'] != $key and $_POST['keyvalue'] === $redis->get($key)) {	# We changed the key name, but not the content, we just use RENAME
+					$cmdSet = $redis->createCommand('rename');
+					$cmdSet->setArguments(array($key,$_POST['keyname']));
+					$cmdGetReply = $redis->executeCommand($cmdSet);
+				} else if($_POST['keyname'] == $key and $_POST['keyvalue'] != $redis->get($key)) {	# We have the value changed
+					$redis->set($_POST['keyname'],$_POST['keyvalue']);
+				} else if($_POST['keyname'] != $key and $_POST['keyvalue'] != $redis->get($key)) {	# We have both changed
+					$redis->set($_POST['keyname'],$_POST['keyvalue']);
+					$cmdSet = $redis->createCommand('del');
+					$cmdSet->setArguments($key);
+					$cmdGetReply = $redis->executeCommand($cmdSet);
+				}
+				header("Location: ?f=list");
+			}
+			$f = "edit";
 		break;
 		case 'new':
 			if($_POST){
@@ -98,23 +100,22 @@ function warn(val){
 							foreach($cmdGetReply as $data) {
 								echo "	<tr>
 		                                <td width=\"543\">$data</td>
-		                                <td width=\"155\" class=\"action\"><a href=\"?f=view&view=$data\" class=\"view\">View</a><a href=\"?f=view&view=$data\" class=\"edit\">Edit</a><a href=\"?f=view&view=$data&do=del\" class=\"delete\" onclick=\"warn($data)\">Delete</a></td>
+		                                <td width=\"155\" class=\"action\"><a href=\"?f=view&view=$data\" class=\"view\">View</a><a href=\"?f=edit&view=$data\" class=\"edit\">Edit</a><a href=\"?f=view&view=$data&do=del\" class=\"delete\" onclick=\"warn($data)\">Delete</a></td>
 		                            </tr>";
 							}
 							echo "</table>";
 						} else if($f == "view") {
 							echo "<div><pre>Key Name: ".$_GET['view']."\nSeconds left to live: NULL\n\nKey Value:\n".$cmdGetReply."\n\n\n</pre></div>";
-						} else if($f == 'edit') {
+						} else if($f == "edit") {
 							echo"<form action=\"\" class=\"jNice\" method='post'>
 								<h3>Edit Key ".$redis->get($key)."</h3>
 			                    	<fieldset>
-			                        	<p><label>Key Name:</label><input type=\"text\" name=\"keyname\" class=\"text-long\" value=\"".$redis->get($key)."\" /></p>
-			                        	<p><label>Key Valeu:</label><textarea rows=\"1\" cols=\"1\" name='keyvalue'">".$redis->get($key).\"</textarea></p>
+			                        	<p><label>Key Name:</label><input type=\"text\" name=\"keyname\" class=\"text-long\" value=\"".$key."\" /></p>
+			                        	<p><label>Key Valeu:</label><textarea rows=\"1\" cols=\"1\" name='keyvalue'>".$redis->get($key)."</textarea></p>
 			                            <input type=\"submit\" value=\"Submit Query\" />
 			                        </fieldset>
-			                    </form>
-			                ";
-						} else if ($f == 'add'){
+			                    </form>";
+						} else if ($f == "add"){
 							echo"<form action=\"\" class=\"jNice\" method='post'>
 								<h3>Add Key</h3>
 			                    	<fieldset>
@@ -127,14 +128,9 @@ function warn(val){
 						}
 					?>
                 </div>
-                <!-- // #main -->
-                
                 <div class="clear"></div>
             </div>
-            <!-- // #container -->
         </div>	
-        <!-- // #containerHolder -->
-        
         <p id="footer">Feel free to use and customize it. <a href="http://www.perspectived.com">Credit is appreciated.</a></p>
     </div>
     <!-- // #wrapper -->
