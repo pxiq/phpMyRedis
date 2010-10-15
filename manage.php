@@ -84,14 +84,11 @@ function warn(val){
                 	<ul class="sideNav">
                     	<li><a href="?f=list">Select Key</a></li>
                     	<li><a href="?f=new">Create a new key</a></li>
-                    	<li><a href="?f=flush">Flush Database</a></li>
                     </ul>
                     <!-- // .sideNav -->
             	</div>    
                 <!-- // #sidebar -->
-                <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#">Dashboard</a> &raquo; <a href="#" class="active">Print resources</a></h2>
-                
+
                 <div id="main">
 					<?php
 						if($f == "list"){
@@ -125,6 +122,19 @@ function warn(val){
 			                        </fieldset>
 			                    </form>
 			                ";
+						} else {
+							$cmdSet = $redis->createCommand('info');
+							$data = $redis->executeCommand($cmdSet);
+							echo "<pre>
+Redis Info:
+
+Redis Version: ".$data['redis_version']."
+Uptime: ".$data['uptime_in_days']." days (".$data['uptime_in_seconds']." seconds)
+Memory Used: ".$data['used_memory_human']." (".$data['used_memory']." bytes)
+
+Clients Connected: ".$data['connected_clients']."
+Slaves Connected: ".$data['connected_slaves']."
+</pre>";
 						}
 					?>
                 </div>
