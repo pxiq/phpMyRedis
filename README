@@ -1,7 +1,25 @@
-Readme
-	This is phpMyRedis. Just upload and your ready to go. This is a alpha version, so it is very rough but it should work. 
+This is phpMyRedis, a web based manager for Redis written in PHP.
+
+This project is currently under development, so there is a chance it wont work for you.
+
+
+Current Features:
+	Add/View/Edit/Delete Redis String Key values
+	
 Todo:
-	Add support for password protected Redis servers
-	Add support for remote Redis servers
-	Add FlushDB functionality
-	More?
+	Add/View/Edit/Delete Lists
+	Add/Edit/Remove Key life spans
+	Check for existing key before renaming old key
+	Move Keys from one database to another
+	Select database
+	Flush Database
+	Flush all databases
+	Add Increment ( +1 +x -1 -x )
+	Force save to disk (Synchronously and Asynchronously)
+	Edit/Save Config
+	
+----------------------------------------------------------	
+	Current Stable Release		: 0.0.0
+	Current Alpha Release 		: 0.0.0
+	Current Development Build	: 0.0.5
+	
