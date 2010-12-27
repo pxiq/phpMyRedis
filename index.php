@@ -20,7 +20,7 @@
 	include "backend/core.lib.php";
 	include "backend/Predis.php";
 	
-	if($_GET['d'] == "true") {
+	if(isset($_GET['d']) and $_GET['d'] == "true") {
 		unset($_SESSION["phpmyredis.session"]);
 	}
 	
