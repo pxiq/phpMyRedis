@@ -33,10 +33,28 @@
 			}
 		}
 		public function template($t) {
+			global $redis; # Posiable a security issue. Will adress on a later release
 			include 'static/header.tpl.php'; # That was very werid
 			include 'static/'.$t.'.tpl.php';
 			include 'static/footer.tpl.php';
 		}
+		
+		// Function Router
+		public function runWithConnection() {
+			if(!isset($_GET['rf'])) {
+				$this->template('root');
+			} else {
+				switch ($_GET['rf']) {
+					case 'list'	: $this->template('list');				break;
+					case 'view' : $this->template('view');				break;
+					case 'edit' : $this->template('edit');				break;
+					case 'add' : $this->template('add');				break;
+					case 'changeSort' : $this->template('changeSort'); 	break;
+				}
+			}
+		}
+		// Functions
+		
 	}
 	
 	$core = new core();

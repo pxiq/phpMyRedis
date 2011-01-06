@@ -1,8 +1,8 @@
 			    <div id="sidebar">
                 	<ul class="sideNav">
                     	<li><a href="?rf=list">Select Key</a></li>
+                    	<li><a href="?rf=changeSort" title="Allows you to change the prameters to the keys command">Change Sort</a></li>
                     	<li><a href="?rf=new">Create a new key</a></li>
-                    	<li><a href="?rf=list&keys=post" title="Allows you to change the prameters to the keys command">Change Sort</a></li>
                     </ul>
                     <!-- // .sideNav -->
             	</div>    
@@ -13,8 +13,12 @@
                 	<table cellpadding="0" cellspacing="0">
 <?php
 $cmdSet = $redis->createCommand('keys');
-if(isset($_POST['keys.manualInput'])) {
-	$cmdSet->setArguments($_POST['keys.manualInput']);
+if(isset($_POST['keys_manualInput'])) {
+	$cmdSet->setArguments($_POST['keys_manualInput']);
+	echo "	<tr>
+		<td width=\"543\">Quering ".$_POST['keys_manualInput']."</td>
+		<td width=\"155\" class=\"action\"></td>
+	</tr>";	
 } else {
 	$cmdSet->setArguments('*');
 }
