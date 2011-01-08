@@ -28,6 +28,7 @@
         		?>
         		<div id="sidebar">
                 	<ul class="sideNav">
+                    	<li><a href="?rf=list">Select Key</a></li>
                 		<li><a href="?rf=add&type=string" class="active">Add String</a></li>
                 		<li><a href="?rf=add&type=list" class="active">Add List</a></li>
                 	</ul>
@@ -35,7 +36,7 @@
          		</div>    
                 <!-- // #sidebar -->
                 <div id="main">
-                	<form action="index.php" method="post" class="jNice">
+                	<form action="index.php?rf=add&type=<?php echo $_GET['type'] ;?>" method="post" class="jNice">
                 		<?php 
                 			if($_GET['type'] == 'string'):
                 		?>
