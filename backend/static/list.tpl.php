@@ -2,7 +2,7 @@
                 	<ul class="sideNav">
                     	<li><a href="?rf=list">Select Key</a></li>
                     	<li><a href="?rf=changeSort" title="Allows you to change the prameters to the keys command">Change Sort</a></li>
-                    	<li><a href="?rf=new">Create a new key</a></li>
+                    	<li><a href="?rf=add&type=string">Create a new key</a></li>
                     </ul>
                     <!-- // .sideNav -->
             	</div>    
