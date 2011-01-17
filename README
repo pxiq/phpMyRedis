@@ -5,9 +5,9 @@ This project is currently under development, so there is a chance it wont work f
 
 Current Features:
 	Add/View/Edit/Delete Redis String Key values
+	Add/View/Edit/Delete Lists
 	
 Todo:
-	Add/View/Edit/Delete Lists
 	Add/Edit/Remove Key life spans
 	Check for existing key before renaming old key
 	Move Keys from one database to another
@@ -20,6 +20,6 @@ Todo:
 	
 ----------------------------------------------------------	
 	Current Stable Release		: 0.0.0
-	Current Alpha Release 		: 0.0.0
-	Current Development Build	: 0.0.5
+	Current Alpha Release 		: 0.0.1
+	Current Development Build	: 0.1.3
 	
