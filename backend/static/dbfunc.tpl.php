@@ -1,9 +1,5 @@
         		<?php 
-        			if($_POST) {
-						switch($_POST) {
-							case 'flushdb'	: $redis->flushdb();	 break;
-						}
-        			}
+        			if(!$_GET['step'] or $_GET['step'] != 1 or $_GET['step'] != 2):        			
         		?>
         		<div id="sidebar">
                 	<ul class="sideNav">
@@ -11,20 +7,37 @@
                     	<li><a href="?rf=add&type=string">Create a new key</a></li>
                     	<li><a href="?rf=dbfunc">Database Functions</a></li>
                 	</ul>
-                    <!-- // .sideNav -->
          		</div>    
-                <!-- // #sidebar -->
                 <div id="main">
-                	<form action="index.php?rf=dbfunc" method="post" class="jNice">
+                	<div id="cmdmsg" style="color:red; font-size:20px;"></div>
+                	<form action="index.php?rf=dbfunc&step=1" method="post" class="jNice">
 						<fieldset>
-                   	  		<p><label>Flushdb:</label><input type="submit" value="execute" name="flushdb" /></p>
-                   	  		<p><label>FlushAll:</label><input type="submit" value="execute" name="flushall" /></p>
-                   	  		<p><label>Shutdown:</label><input type="submit" value="execute" name="shutdown" /></p>
-                   	  		<p><label>Save:</label><input type="submit" value="execute" name="save" /></p>
-                   	  		<p><label>BGReWriteAOF:</label><input type="submit" value="execute" name="bgrewriteaof" /></p>
-                   	  		<p><label>BGSsave:</label><input type="submit" value="execute" name="bgsave" /></p>
+							<script type="text/javascript">
+								function err(e) {
+									document.getElementById('cmdmsg').innerHTML = 'Warning! You should refer to the <a href="http://http://redis.io/commands/'+ e.value +'">documentation</a> before running this command!';
+								}
+							</script>
+						  <select name="execute" id="execute" onchange="err(this);">
+						    <option value="">Select Command</option>
+						    <option value="flushall">Flush Database</option>
+						    <option value="flushdb">Flush Table</option>
+						    <option value="shutdown">Shutdown</option>
+						    <option value="save">Save</option>
+						    <option value="bgrewriteaof">BGReWriteAOF</option>
+						    <option value="bgssave">BGSsave</option>
+						  </select>
+                   	  		<p><input type="submit" value="execute" name="bgsave" /></p>
                       	</fieldset>
                     </form>
                 </div>
-                <!-- // #main -->
-                
+        		<?php
+        			elseif($_GET['step'] == 2 and $_POST):
+        		?>
+        			
+        		<?php
+        			if($_POST) {
+						switch($_POST) {
+							case 'flushdb'	: $redis->flushdb();	 break;
+						}
+        			}
+        		?>
