@@ -17,8 +17,8 @@
 
 	session_start();
 	
-	include "backend/core.lib.php";
-	include "backend/Predis.php";
+	include "functions/Predis.php";
+	include "functions/site.php";
 	
 	if(isset($_GET['d']) and $_GET['d'] == "true") {
 		unset($_SESSION["phpmyredis.session"]);
@@ -36,17 +36,33 @@
 		    'password' => $s['password'], 
 		    'database' => $s['database'], 
 		));
-		# Because Predis does not thorw an error when the class is created
-		# We can check because this command will return an array if true
-		# String if it is false
 		$cmdSet = $redis->createCommand('keys');
 		$cmdSet->setArguments('*');
 		@$cmdGetReply = $redis->executeCommand($cmdSet);
-		if(!is_array($cmdGetReply))
-			echo "Login Fail";
-		else
-			$core->runWithConnection();
+		
+		if(!is_array($cmdGetReply)) {
+			echo "Database connection failure";
+		} else {
+			if($_GET['do'])
+				display($_GET['do']);
+			else	
+				display('home');
+		}
 	} else {
-		$core->defineStatic("login");
+		if($_POST) {
+			$s = $_POST;
+			$fp = fsockopen($s['host'], $s['port'], $errno, $errstr, 30);
+			if(!$fp) {
+				echo "The Host and/or port is invalid";
+			} else {
+				$_SESSION['phpmyredis.session'] = true;
+				$_SESSION['phpmyredis.host'] = $s['host'];
+				$_SESSION['phpmyredis.port'] = $s['port'];
+				$_SESSION['phpmyredis.database'] = 1;
+				$_SESSION['phpmyredis.password'] = $s['password'];
+				header("Location: index.php");
+			}
+		}
+		display('login');
 	}
 ?>

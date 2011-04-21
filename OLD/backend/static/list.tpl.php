@@ -23,13 +23,17 @@ if(isset($_POST['keys_manualInput'])) {
 	$cmdSet->setArguments('*');
 }
 $cmdGetReply = $redis->executeCommand($cmdSet);
-
-foreach($cmdGetReply as $data) {
-	echo "	<tr>
-		<td width=\"543\">$data</td>
-		<td width=\"155\" class=\"action\"><a href=\"?rf=view&view=$data\" class=\"view\">View</a><a href=\"?rf=edit&edit=$data\" class=\"edit\">Edit</a><a href=\"?rf=del&del=$data\" class=\"delete\" onclick=\"warn($data)\">Delete</a></td>
-	</tr>";
+if(count($cmdGetReply) == 0) {
+	echo 'No keys found';
+} else {
+	foreach($cmdGetReply as $data) {
+		echo "	<tr>
+			<td width=\"543\">$data</td>
+			<td width=\"155\" class=\"action\"><a href=\"?rf=view&view=$data\" class=\"view\">View</a><a href=\"?rf=edit&edit=$data\" class=\"edit\">Edit</a><a href=\"?rf=del&del=$data\" class=\"delete\" onclick=\"warn($data)\">Delete</a></td>
+		</tr>";
+	}	
 }
+
 ?>
 					</table>
 				</div>

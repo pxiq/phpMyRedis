@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+
+<html xml:lang="en" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SQL Buddy - Home</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<link href="frontend/common.css" rel="stylesheet" type="text/css" />
+<link href="frontend/navigation.css" rel="stylesheet" type="text/css" />
+<link href="frontend/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <div id="headerlogo"> <a onClick="sideMainClick('home.php', 0); return false;" href="#page=home"><img src="images/logo.png"></a> </div>
+    <div id="toptabs">
+      <ul>
+        <li id="0" class="selected"><a href="#page=home">Home</a></li>
+        <li id="1"><a href="#page=users&amp;topTab=1">Users</a></li>
+        <li id="2"><a href="#page=query&amp;topTab=2">Query</a></li>
+        <li id="3"><a href="#page=import&amp;topTab=3">Import</a></li>
+        <li id="4"><a href="#page=export&amp;topTab=4">Export</a></li>
+      </ul>
+    </div>
+    <div id="headerinfo"> <span style="display: none;" id="load">Loading...</span> <a href="logout.php">Logout</a> </div>
+    <div class="clearer"></div>
+  </div>
+  <div id="bottom" style="opacity: 1;">
+    <div id="leftside">
+      <div id="sidemenu" style="height: 749px;">
+        <div class="dblist">
+          <ul>
+            <li id="sidehome" class="selected"><a onClick="sideMainClick('home.php', 0); return false;" href="#page=home">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Home</div>
+              </a></li>
+            <li id="sideusers" class=""><a onClick="sideMainClick('users.php', 1); return false;" href="#page=users&amp;topTab=1">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Create</div>
+              </a></li>
+            <li id="sidequery" class=""><a onClick="sideMainClick('query.php', 2); return false;" href="#page=query&amp;topTab=2">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Query</div>
+              </a></li>
+            <li id="sideimport" class=""><a onClick="sideMainClick('import.php', 3); return false;" href="#page=import&amp;topTab=3">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Import</div>
+              </a></li>
+            <li id="sideexport" class=""><a onClick="sideMainClick('export.php', 4); return false;" href="#page=export&amp;topTab=4">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Export</div>
+              </a></li>
+            <li id="sidesettings" class=""><a onClick="sideMainClick('export.php', 4); return false;" href="#page=export&amp;topTab=4">
+              <div class="menuicon">&gt;</div>
+              <div class="menutext">Database Tools</div>
+              </a></li>
+          </ul>
+        </div>
+        <div class="dblistheader">Databases</div>
+        <div id="databaselist" class="dblist">
+          <ul>
+            <li id="db0" class=""><a></a><a class="menutoggler"></a><a class="menutext" href="#page=dboverview&amp;db=aa_cms&amp;topTabSet=1&amp;topTab=0">aa_cms</a>
+              <ul class="sublist" id="sublist0" style="height: 0px; display: none;">
+                <li id="sub1" class=""><a href="#page=browse&amp;db=aa_cms&amp;table=sym_authors&amp;topTabSet=2&amp;topTab=0">sym_authors<span class="subcount">(1)</span></a></li>
+                <li id="sub2" class=""><a href="#page=browse&amp;db=aa_cms&amp;table=sym_cache&amp;topTabSet=2&amp;topTab=0">sym_cache<span class="subcount">(1)</span></a></li>
+                <li id="sub43" class=""><a href="#page=browse&amp;db=aa_cms&amp;table=sym_sessions&amp;topTabSet=2&amp;topTab=0">sym_sessions<span class="subcount">(5)</span></a></li>
+              </ul>
+            </li>
+            <li id="db1" class=""><a></a><a class="menutoggler"></a><a class="menutext" href="#page=dboverview&amp;db=information_schema&amp;topTabSet=1&amp;topTab=0">information_schema</a>
+              <ul class="sublist" id="sublist1" style="height: 0px; display: none;">
+                <li id="sub44" class=""><a href="#page=browse&amp;db=information_schema&amp;table=CHARACTER_SETS&amp;topTabSet=2&amp;topTab=0">CHARACTER_SETS<span class="subcount">(36)</span></a></li>
+                <li id="sub45" class=""><a href="#page=browse&amp;db=information_schema&amp;table=COLLATIONS&amp;topTabSet=2&amp;topTab=0">COLLATIONS<span class="subcount">(127)</span></a></li>
+                <li id="sub46" class=""><a href="#page=browse&amp;db=information_schema&amp;table=COLLATION_CHARACTER_SET_APPLICABILITY&amp;topTabSet=2&amp;topTab=0">COLLATION_CHARACTER_SET_APPLICABILITY<span class="subcount">(128)</span></a></li>
+              </ul>
+            </li>
+            <li id="db2" class=""><a></a><a class="menutoggler"></a><a class="menutext" href="#page=dboverview&amp;db=lw_redmine&amp;topTabSet=1&amp;topTab=0">lw_redmine</a>
+              <ul class="sublist" id="sublist2" style="height: 0px; display: none;">
+                <li id="sub116" class=""><a href="#page=browse&amp;db=lw_redmine&amp;table=wiki_pages&amp;topTabSet=2&amp;topTab=0">wiki_pages<span class="subcount">(3)</span></a></li>
+                <li id="sub117" class=""><a href="#page=browse&amp;db=lw_redmine&amp;table=wiki_redirects&amp;topTabSet=2&amp;topTab=0">wiki_redirects<span class="subcount">(0)</span></a></li>
+                <li id="sub118" class=""><a href="#page=browse&amp;db=lw_redmine&amp;table=workflows&amp;topTabSet=2&amp;topTab=0">workflows<span class="subcount">(144)</span></a></li>
+              </ul>
+            </li>
+            <li id="db3" class=""><a></a><a class="menutoggler"></a><a class="menutext" href="#page=dboverview&amp;db=lw_tp&amp;topTabSet=1&amp;topTab=0">lw_tp</a>
+              <ul class="sublist" id="sublist3" style="height: 0px; display: none;">
+                <li id="sub206" class=""><a href="#page=browse&amp;db=lw_tp&amp;table=txp_prefs&amp;topTabSet=2&amp;topTab=0">txp_prefs<span class="subcount">(115)</span></a></li>
+                <li id="sub207" class=""><a href="#page=browse&amp;db=lw_tp&amp;table=txp_section&amp;topTabSet=2&amp;topTab=0">txp_section<span class="subcount">(4)</span></a></li>
+                <li id="sub208" class=""><a href="#page=browse&amp;db=lw_tp&amp;table=txp_users&amp;topTabSet=2&amp;topTab=0">txp_users<span class="subcount">(1)</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="rightside">
+      <div id="content">
+        <div class="corners">
+          <div class="tl"></div>
+          <div class="tr"></div>
+        </div>
+        <div id="innercontent" style="min-height: 311px;">
+          <div class="pane" id="pane0" style="">
+            <table class="hometable">
+              <tbody>
+                <tr>
+                  <td><h4>Welcome to phpMyRedis</h4></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 0 13px 10px"><p>You are connected to Redis 2.2.2 running on</p>
+                    <table cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+                          <td class="inputfield"> Updates: </td>
+                          <td> There are no updates available. </td>
+                        </tr>
+                        <tr>
+                          <td class="inputfield"> Language: </td>
+                          <td><select onChange="switchLanguage()" id="langSwitcher">
+                              <option selected="selected" value="en_US">English</option>
+                            </select></td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><h4>Getting started</h4></td>
+                </tr>
+                <tr>
+                  <td style="padding: 1px 0 15px 10px"><ul>
+                      <li><a href="http://www.sqlbuddy.com/help/">Help</a></li>
+                      <li><a href="http://www.sqlbuddy.com/translations/">Translations</a></li>
+                      <li><a href="http://www.sqlbuddy.com/contact/">Contact</a></li>
+                    </ul></td>
+                </tr>
+                <tr>
+                  <td><h4>Server Stats</h4></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0px 0 20px 10px"><form onSubmit="createDatabase(); return false;">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td class="inputfield"> Version</td>
+                            <td>2.2.2</td>
+                          </tr>
+                          <tr>
+                            <td class="inputfield">Memory Used</td>
+                            <td>127MB</td>
+                          </tr>
+                          <tr>
+                            <td class="inputfield">Clients Connected</td>
+                            <td>1</td>
+                          </tr>
+                          <tr>
+                            <td class="inputfield">Slaves Connected</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </form></td>
+                </tr>
+                <tr>
+                  <td><h4>Did you know...</h4></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 0 10px 10px;"><p>The login page is based on a default user of root@localhost. By editing config.php, you can change the default user and host to whatever you want.</p></td>
+                </tr>
+                <tr>
+                  <td><h4>Keyboard shortcuts</h4></td>
+                </tr>
+                <tr>
+                  <td style="padding: 4px 0 5px 10px"><table class="keyboardtable">
+                      <tbody>
+                        <tr>
+                          <th>Press this key...</th>
+                          <th>...and this will happen</th>
+                        </tr>
+                        <tr>
+                          <td>a</td>
+                          <td>select all</td>
+                        </tr>
+                        <tr>
+                          <td>n</td>
+                          <td>select none</td>
+                        </tr>
+                        <tr>
+                          <td>e</td>
+                          <td>edit selected items</td>
+                        </tr>
+                        <tr>
+                          <td>d</td>
+                          <td>delete selected items</td>
+                        </tr>
+                        <tr>
+                          <td>r</td>
+                          <td>refresh page</td>
+                        </tr>
+                        <tr>
+                          <td>q</td>
+                          <td>load the query tab</td>
+                        </tr>
+                        <tr>
+                          <td>f</td>
+                          <td>browse tab - go to first page of results</td>
+                        </tr>
+                        <tr>
+                          <td>l</td>
+                          <td>browse tab - go to last page of results</td>
+                        </tr>
+                        <tr>
+                          <td>g</td>
+                          <td>browse tab - go to previous page of results</td>
+                        </tr>
+                        <tr>
+                          <td>h</td>
+                          <td>browse tab - go to next page of results</td>
+                        </tr>
+                        <tr>
+                          <td>o</td>
+                          <td>optimize selected tables</td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="corners">
+          <div class="bl"></div>
+          <div class="br"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
