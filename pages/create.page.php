@@ -4,7 +4,11 @@
 		if($_POST['key_type'] == 'string') {
 			set_key($_POST['key_name'],$_POST['value_1']);
 		} else if($_POST['key_type'] == 'hash') {
-			
+			$d = array();
+			for($i = 0; $i<$_POST['count']; $i++) {
+				$d = array($_POST['hash_field_'.$i], $_POST['hash_value_'.$i]);
+			}
+			set_hash($_POST['key_name'], $d);
 		}
 		
 		
