@@ -1,6 +1,5 @@
 <?php
 	require 'pages/header.tpl.php';
-	$data = execute_redis_command('info',NULL);
 ?>
 <div id="rightside">
       <div id="content">
