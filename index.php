@@ -43,7 +43,7 @@
 		if(!is_array($cmdGetReply)) {
 			echo "Database connection failure";
 		} else {
-			if($_GET['do'])
+			if(isset($_GET['do']))
 				display($_GET['do']);
 			else	
 				display('home');
