@@ -37,6 +37,16 @@ Key Data:
 <?php echo var_dump($responce); ?>
 								</pre>
 							</td>
+		                	<tr>
+		                		<td><h4>Table Functions</h4></td>
+		                	</tr>
+			                <tr>
+			                  <td style="padding: 1px 0 15px 10px"><ul>
+			                      <li><a href="?do=modify&key=<?php echo $_GET['view']; ?>&f=del">Delete</a></li>
+			                      <li><a href="?do=modify&key=<?php echo $_GET['view']; ?>&f=edit">Edit Value(s)</a></li>
+			                      <li><a href="?do=modify&key=<?php echo $_GET['view']; ?>&f=edit_expire">Modify Expire Time</a></li>
+			                    </ul></td>
+			                </tr>
 	                	</tr>
 					</tbody>
 	            </table>
