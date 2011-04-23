@@ -2,7 +2,7 @@
 
 <html xml:lang="en" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>SQL Buddy - Home</title>
+	<title>phpMyRedis</title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<link href="frontend/common.css" rel="stylesheet" type="text/css" />
 	<link href="frontend/navigation.css" rel="stylesheet" type="text/css" />
