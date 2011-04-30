@@ -58,7 +58,7 @@
 				$_SESSION['phpmyredis.session'] = true;
 				$_SESSION['phpmyredis.host'] = $s['host'];
 				$_SESSION['phpmyredis.port'] = $s['port'];
-				$_SESSION['phpmyredis.database'] = 1;
+				$_SESSION['phpmyredis.database'] = 15;
 				$_SESSION['phpmyredis.password'] = $s['password'];
 				header("Location: index.php");
 			}
