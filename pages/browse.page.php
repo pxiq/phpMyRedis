@@ -49,41 +49,26 @@
               </div>
             </div>
             <div style="overflow-x: hidden; max-height: 400px" class="gridscroll withchecks">
-			<?php
-				foreach($cmd as $data) {
-			?>
-			<div class="row41 browse alternator">
-                <table cellspacing="0" cellpadding="0">
-                  <tbody>
-                    <tr>
-                      <td><div class="item column1">
-                          <div style="float: left; overflow: hidden; width: 185px"><?php echo $data; ?></div>
-                      <img onclick="subTabLoad('aa_cms', 'sym_sections_association')" class="goto" src="images/goto.png"></div></td>
-                      <td><div class="item column2"><?php echo execute_redis_command('type',$data); ?></div></td>
-                      <td><div class="item column3">expires in</div></td>
-                      <td><div class="item column4"></div></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+		<?php
+			foreach($cmd as $data) {
+		?>
+		<div class="row41 browse alternator" onclick="window.location = '?do=modify&key=<?php echo $data; ?>';">
+		        <table cellspacing="0" cellpadding="0">
+				<tbody>
+					<tr>
+						<td><div class="item column1">
+						<div style="float: left; overflow: hidden; width: 185px"><?php echo $data; ?></div>
+						<img class="goto" src="images/goto.png"></div></td>
+						<td><div class="item column2"><?php echo execute_redis_command('type',$data); ?></div></td>
+						<td><div class="item column3">expires in</div></td>
+						<td><div class="item column4"></div></td>
+					</tr>
+				</tbody>
+		        </table>
+		</div>
 			<?php	
 				}
 			?>
-              <div class="row41 browse alternator">
-                <table cellspacing="0" cellpadding="0">
-                  <tbody>
-                    <tr>
-                      <td><div class="item column1">
-                          <div style="float: left; overflow: hidden; width: 185px">sym_sections_association</div>
-                      <img onclick="subTabLoad('aa_cms', 'sym_sections_association')" class="goto" src="images/goto.png"></div></td>
-                      <td><div class="item column2">3</div></td>
-                      <td><div class="item column3">utf8</div></td>
-                      <td><div class="item column4"></div></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
             </div>
           </div>
           <?php
