@@ -40,8 +40,14 @@ function addNewList() {
 
 function addNewHash() {
 	window.countd++;
-	var code = '<tr><td class="secondaryheader"> Field: </td><td><input type="text" name="hash_field_'+ window.countd+'" class="text" /></td><td style="padding-left: 5px" class="secondaryheader"> Value: </td><td class="inputarea"><input type="text" name="hash_value_'+ window.countd+'" class="text" /></td></tr>';
-	$('add_container').append(code);
+
+
+//	$('add_container').innerHTML += code;
+	
+	new Element('tr').inject($("add_container")).set({
+	    'html': '<td class="secondaryheader"> Field: </td><td><input type="text" name="hash_field_'+ window.countd+'" class="text" /></td><td style="padding-left: 5px" class="secondaryheader"> Value: </td><td class="inputarea"><input type="text" name="hash_value_'+ window.countd+'" class="text" /></td>'
+	});
+	
 	$('count').value = window.countd;
 }
 

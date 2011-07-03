@@ -1,31 +1,43 @@
-#header {
-padding-bottom: 4px;
+.quick_search {
+text-align: center;
+padding: 14px 0 0px 0;
 }
 
-#rightside {
-padding-bottom: 0 !important;
+.quick_search input[type=text] {
+text-align: left;
+height: 22px;
+width: 88%;
+color: #ccc;
+padding-left: 2%;
+padding-top: 5px;
+background: #fff url(../images/icn_search.png) no-repeat;
+background-position: 10px 6px;
 }
 
-.leftchecks {
-margin-left: -22px !important;
-}
-.browsetab .leftchecks {
-margin-left: -38px !important;
-}
-
-.manip {
-padding-top: 0 !important;
-padding-bottom: 1px !important;
-}
-.manip dt {
-padding: 0 5px 0 1px !important;
+.toggleLink {
+display: inline;
+float: none;
+margin-left: 2%
 }
 
-.browsetab .gridheader, .users .gridheader {
-margin-top: -15px;
+html ul.tabs li.active, html ul.tabs li.active a:hover  {
+background: #ccc;
 }
 
-.sublist li a {
-padding-top: 0 !important;
-padding-bottom: 1px !important;
+input[type=submit].btn_post_message {
+background: url(../images/post_message.png) no-repeat;
 }
+
+fieldset input[type=text] {
+margin-left: -10px;
+}
+
+
+fieldset select {
+margin-left: -10px
+}
+
+fieldset textarea {
+margin-left: -10px;
+}
+

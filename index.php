@@ -17,52 +17,10 @@
 
 	session_start();
 	
-	include "functions/Predis.php";
-	include "functions/site.php";
+	define("_PATH_", dirname(__FILE__).'/backend/');
 	
-	if(isset($_GET['d']) and $_GET['d'] == "true") {
-		unset($_SESSION["phpmyredis.session"]);
-	}
+	require_once _PATH_ . "runner.php";
+	phpMyRedis::newSession();
 	
-	if(isset($_SESSION["phpmyredis.session"])) {
-		$s = array(
-			"host" => $_SESSION['phpmyredis.host'],
-			"port" => $_SESSION['phpmyredis.port'],
-			"database" => $_SESSION['phpmyredis.database'],
-			"password" => $_SESSION['phpmyredis.password']
-		);
-		$redis = new Predis_Client(array(
-		    'host'     => $s['host'],
-		    'password' => $s['password'], 
-		    'database' => $s['database'], 
-		));
-		$cmdSet = $redis->createCommand('keys');
-		$cmdSet->setArguments('*');
-		@$cmdGetReply = $redis->executeCommand($cmdSet);
-		
-		if(!is_array($cmdGetReply)) {
-			echo "Database connection failure";
-		} else {
-			if(isset($_GET['do']))
-				display($_GET['do']);
-			else	
-				display('home');
-		}
-	} else {
-		if($_POST) {
-			$s = $_POST;
-			$fp = fsockopen($s['host'], $s['port'], $errno, $errstr, 30);
-			if(!$fp) {
-				echo "The Host and/or port is invalid";
-			} else {
-				$_SESSION['phpmyredis.session'] = true;
-				$_SESSION['phpmyredis.host'] = $s['host'];
-				$_SESSION['phpmyredis.port'] = $s['port'];
-				$_SESSION['phpmyredis.database'] = 15;
-				$_SESSION['phpmyredis.password'] = $s['password'];
-				header("Location: index.php");
-			}
-		}
-		display('login');
-	}
+	
 ?>
